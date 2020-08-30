@@ -56,10 +56,10 @@ const getUser = (email) => {
   });
 };
 
-const getLoggedInUser = (email) => {
+const getLoggedInUser = () => {
   var loggedInUser = localStorage.getItem(LOGGED_IN_USER);
   if (loggedInUser) {
-    return getUser(email);
+    return getUser(loggedInUser);
   }
 };
 
@@ -69,8 +69,10 @@ const setLoggedInUser = (email) => {
 
 const logoutUser = () => {
   return new Promise((resolve) => {
-    setLoggedInUser(null);
-    resolve();
+    localStorage.removeItem(LOGGED_IN_USER);
+    setTimeout(() => {
+      resolve();
+    }, 100);
   });
 };
 

@@ -61,6 +61,7 @@ import { loginUser } from '../services/user';
 
 export default {
   name: 'LoginForm',
+  created() {},
   data() {
     return {
       loginError: '',
