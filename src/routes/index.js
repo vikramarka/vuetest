@@ -3,6 +3,7 @@ import login from './login.vue';
 import signup from './signup.vue';
 import dashboard from './dashboard.vue';
 import profile from './profile.vue';
+import game from './game.vue';
 import { getLoggedInUser } from '../services/user';
 
 const routerHistory = createWebHistory();
@@ -32,6 +33,14 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: profile,
+      meta: {
+        protected: true,
+      },
+    },
+    {
+      path: '/game/:gameId/:slug',
+      name: 'game',
+      component: game,
       meta: {
         protected: true,
       },

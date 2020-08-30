@@ -44,6 +44,8 @@
           :name="game.name"
           :imagePath="game.background_image"
           :bgColor="game.dominant_color"
+          :gameId="game.id"
+          :slug="game.slug"
         />
       </div>
     </div>
@@ -68,6 +70,7 @@ export default {
           );
         });
       }
+      console.log(this.filteredGames);
     },
   },
   created: async function() {

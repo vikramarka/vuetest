@@ -1,5 +1,6 @@
 <template>
-  <div
+  <router-link
+    :to="getLink"
     class="block w-full h-full bg-grey-dark bg-no-repeat bg-center bg-cover relative"
     :style="{ backgroundImage: `url(${imagePath})` }"
   >
@@ -11,13 +12,19 @@
         {{ name }}
       </h2>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
   name: 'GameItem',
-  props: ['name', 'imagePath', 'bgColor', 'textColor'],
+  props: ['name', 'imagePath', 'bgColor', 'textColor', 'slug', 'gameId'],
+  created: function() {},
+  computed: {
+    getLink: function() {
+      return `/game/${this.gameId}/${this.slug}/`;
+    },
+  },
 };
 </script>
 

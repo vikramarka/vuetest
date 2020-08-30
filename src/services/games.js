@@ -19,7 +19,7 @@ const getGameDetails = function(game_pk) {
       'x-rapidapi-host': rapidAPIHost,
       'x-rapidapi-key': rapidAPIKey,
     },
-  }).then((res) => res.json);
+  }).then((res) => res.json());
 };
 
 export { getGames, getGameDetails };
