@@ -1,45 +1,51 @@
 <template>
   <NavBar :name="user?.name" />
-  <div class="flex max-w-4xl mx-auto  p-8 justify-between items-center">
-    <h1 class="text-2xl">List of Games</h1>
-    <div class="flex items-center">
-      <input v-model="searchTerm" type="text" class="search-input form-input" />
-      <div class="search-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          style="width:30px;margin-left:8px"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
+  <div class="pt-20">
+    <div class="flex max-w-4xl mx-auto  p-8 justify-between items-center">
+      <h1 class="text-2xl">List of Games</h1>
+      <div class="flex items-center">
+        <input
+          v-model="searchTerm"
+          type="text"
+          class="search-input form-input"
+        />
+        <div class="search-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            style="width:30px;margin-left:8px"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
-  <div v-if="gamesLoading">Loading...</div>
-  <div v-else-if="filteredGames.length == 0">
-    0 results found for {{ searchTerm }}.
-  </div>
-  <div
-    v-else
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 max-w-4xl mx-auto px-8"
-  >
+    <div v-if="gamesLoading">Loading...</div>
+    <div v-else-if="filteredGames.length == 0">
+      0 results found for {{ searchTerm }}.
+    </div>
     <div
-      class="bg-white rounded text-grey-darkest shadow-md game-item"
-      v-for="game in filteredGames"
-      :key="game"
+      v-else
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 max-w-4xl mx-auto px-8"
     >
-      <GameItem
-        :name="game.name"
-        :imagePath="game.background_image"
-        :bgColor="game.dominant_color"
-      />
+      <div
+        class="bg-white rounded text-grey-darkest shadow-md game-item"
+        v-for="game in filteredGames"
+        :key="game"
+      >
+        <GameItem
+          :name="game.name"
+          :imagePath="game.background_image"
+          :bgColor="game.dominant_color"
+        />
+      </div>
     </div>
   </div>
 </template>

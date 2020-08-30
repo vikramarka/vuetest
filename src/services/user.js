@@ -76,4 +76,24 @@ const logoutUser = () => {
   });
 };
 
-export { registerUser, loginUser, getUser, getLoggedInUser, logoutUser };
+const updateUser = (email, name) => {
+  return new Promise((resolve) => {
+    let users = JSON.parse(localStorage.getItem(VUE_USERS)) || [];
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].email === email) {
+        users[i].name = name;
+      }
+    }
+    localStorage.setItem(VUE_USERS, JSON.stringify(users));
+    resolve();
+  });
+};
+
+export {
+  registerUser,
+  loginUser,
+  getUser,
+  getLoggedInUser,
+  logoutUser,
+  updateUser,
+};

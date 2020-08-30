@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import login from './login.vue';
 import signup from './signup.vue';
 import dashboard from './dashboard.vue';
+import profile from './profile.vue';
 import { getLoggedInUser } from '../services/user';
 
 const routerHistory = createWebHistory();
@@ -27,6 +28,14 @@ const router = createRouter({
         protected: true,
       },
     },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: profile,
+      meta: {
+        protected: true,
+      },
+    },
   ],
 });
 
@@ -35,10 +44,8 @@ router.beforeEach((to, from, next) => {
   console.log(user);
   //if the route is protected navigate to login page
   if (to.meta.protected && !user) {
-    console.log('lllll');
-    next({ name: '/' });
+    next({ name: 'home' });
   } else if ((to.name == 'home' || to.name == 'signup') && user) {
-    console.log('lllll');
     //if the user is already logged in and trying to access home page or signup redirect to dashboard
     next({ name: 'dashboard' });
   } else {

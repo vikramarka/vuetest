@@ -5,7 +5,7 @@
     </div>
   </header> -->
   <header
-    class="lg:px-16 px-6 bg-blue-600 flex flex-wrap items-center lg:py-0 py-2"
+    class="lg:px-16 px-6 bg-blue-600 flex flex-wrap items-center lg:py-0 py-2 fixed w-full z-50"
   >
     <div
       class="flex-1 flex justify-between items-center font-bold text-white text-2xl"
@@ -36,6 +36,13 @@
               to="/profile"
               class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-white"
               >Profile</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/dashboard"
+              class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-white"
+              >Dashboard</router-link
             >
           </li>
           <li>
