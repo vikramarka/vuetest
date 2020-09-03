@@ -41,11 +41,11 @@
 </template>
 
 <script>
-import { getLoggedInUser } from '../services/user';
-import { getGameDetails } from '../services/games';
-import NavBar from '../components/NavBar';
+import { getLoggedInUser } from "../services/user";
+import { getGameDetails } from "../services/games";
+import NavBar from "../components/NavBar";
 export default {
-  name: 'game',
+  name: "game",
   components: {
     NavBar,
   },
@@ -56,7 +56,7 @@ export default {
       gameDetails: null,
     };
   },
-  created: async function() {
+  created: async function () {
     this.user = await getLoggedInUser();
     let gameId = this.$route.params.gameId;
     let gameDetails = await getGameDetails(gameId);
@@ -65,23 +65,23 @@ export default {
     this.detailsLoading = false;
   },
   computed: {
-    getDevelopers: function() {
-      var developers = '';
+    getDevelopers: function () {
+      var developers = "";
       for (var i = 0; i < this.gameDetails.developers.length; i++) {
         developers += this.gameDetails.developers[i].name;
         if (i < this.gameDetails.developers.length - 1) {
-          developers += ', ';
+          developers += ", ";
         }
       }
       return developers;
     },
 
-    getPublishers: function() {
-      var publishers = '';
+    getPublishers: function () {
+      var publishers = "";
       for (var i = 0; i < this.gameDetails.publishers.length; i++) {
         publishers += this.gameDetails.publishers[i].name;
         if (i < this.gameDetails.publishers.length - 1) {
-          publishers += ', ';
+          publishers += ", ";
         }
       }
       return publishers;
@@ -113,6 +113,8 @@ export default {
 }
 .game-desc {
   max-width: 500px;
+  max-height: 450px;
+  overflow: auto;
   float: right;
   text-align: justify;
 }
